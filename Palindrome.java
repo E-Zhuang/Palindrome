@@ -81,6 +81,91 @@ public class Palindrome
 
         }
 
+    //use a new string to store valid characters
+    public String testPal_v1()
+    {
+        String output, test;
+        int character, back;
+        
+        character = 0;
+        back = 1;
+        
+        //using a new string to store alphabet
+        test = "";
+        for(int index = 0; index < length; index++) 
+        {
+            if (lowerPal.charAt(index) >= 'a' &&
+                lowerPal.charAt(index) <= 'z') {
+                test += lowerPal.charAt(index);
+            }
+        }
+        //now use the new string test
+        length = test.length();
+        
+        if (length == 1) 
+            output = "No, the string you entered is NOT a palindrome. ";
+            
+        else
+        {               
+            //Compare the first char to the last char and so on.
+            while ((character < (length / 2)) && (test.charAt(character) == test.charAt(length - back)))
+            {
+                character++;
+                back++; 
+            }
+                
+            if ((length > 1) && (character == (length / 2)))
+                output = "Yes, the string you entered is a palindrome. ";
+            else
+                output = "No, the string you entered is NOT a palindrome. ";
+            }
+            
+        return output;
 
+        }
+
+    //use a new string to store valid characters
+    //to compare the strings, first do a reverse, then compare the two strings
+    public String testPal_v2()
+    {
+        String output, test, reverse;
+        int character, back;
+        
+        character = 0;
+        back = 1;
+        
+        //using a new string to store alphabet
+        test = "";
+        for(int index = 0; index < length; index++) 
+        {
+            if (lowerPal.charAt(index) >= 'a' &&
+                lowerPal.charAt(index) <= 'z') {
+                test += lowerPal.charAt(index);
+            }
+        }
+        //now use the new string test
+        length = test.length();
+        
+        if (length == 1) 
+            output = "No, the string you entered is NOT a palindrome. ";
+    
+        else
+        {               
+            reverse = "";
+            for(index = length - 1; index < 0; index--) 
+            {
+                    reverse += test.charAt(index);
+                }
+            }                
+            //now check if the two strings are equal
+            if (test.equals(reverse))
+                output = "Yes, the string you entered is a palindrome. ";
+            else
+                output = "No, the string you entered is NOT a palindrome. ";
+            }
+            
+        return output;
+
+        }
     }
 
